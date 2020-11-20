@@ -69,6 +69,7 @@ vars:
 
     four_mile_analytics_sample:
         source_database: 'four-mile-lake'
+        analysis_start_date: '2016-01-01'
         dbt_project_created_date: '2020-11-19'  # Set as date when dbt project first created
 
     asana_source:
@@ -77,6 +78,7 @@ vars:
         github_database: 'four-mile-lake'
     fivetran_log:
         fivetran_log_database: 'four-mile-lake'
+        fivetran_log_schema: 'logs_fivetran'
 
 
 # Define dbt data seeds
