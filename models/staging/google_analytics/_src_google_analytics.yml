@@ -2,43 +2,42 @@ version: 2
 
 sources:
   - name: google_analytics
-    description: Sample Google Analytics data from BigQuery's public datasets
-    loader: BigQuery Transfer
-
-    meta:
-      contains_pii: false
-      owner: "@jb"
-      maturity: dev
-
-    tags:
-      - marketing
-      - google
-
+    database: four-mile-lake
+    
     tables:
-      - name: ga_sessions
-        description: Denormalized Google Analytics partitioned session data for visit usage, device info, hits, time on site, etc.
-        identifier: ga_sessions_*
-        tests:
-          - primary_key:
-              column_name: "fullVisitorId || '-' || visitStartTime"
+      - name: daily_summary
         columns:
+          - name: _fivetran_id
           - name: date
-            tests:
-              - not_null:
-                  severity: warn
-          - name: trafficSource.campaign
-            tests:
-              - not_null:
-                  severity: warn
-          - name: socialEngagementType
-            tests:
-              - not_null:
-                  severity: warn
-          - name: channelGrouping
-            description: "Grouped marketing channels based on the visitor's attributed source"
-            tests:
-              - not_null:
-                  severity: warn
-              - accepted_values:
-                  values: ['Direct', 'Social', 'Paid Search', 'Affiliates', '(Other)', 'Referral', 'Organic Search', 'Display']
-                  severity: warn
+          - name: profile
+          - name: _fivetran_synced
+          - name: avg_session_duration
+          - name: avg_time_on_page
+          - name: bounces
+          - name: browser
+          - name: country
+          - name: device_category
+          - name: language
+          - name: medium
+          - name: new_users
+          - name: pageviews
+          - name: pageviews_per_session
+          - name: sessions
+          - name: source
+          - name: unique_pageviews
+          - name: users
+
+      - name: fivetran_audit
+        columns:
+          - name: id
+          - name: _fivetran_synced
+          - name: done
+          - name: message
+          - name: progress
+          - name: rows_updated_or_inserted
+          - name: schema
+          - name: start
+          - name: status
+          - name: table
+          - name: update_id
+          - name: update_started

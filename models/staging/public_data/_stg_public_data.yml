@@ -1,0 +1,15 @@
+version: 2
+
+models:
+  - name: stg_public_data__iris
+    columns:
+      - name: iris_id
+        tests:
+          - primary_key
+      - name: sepal_length
+      - name: sepal_width
+      - name: petal_length
+      - name: petal_width
+      - name: species
+        tests:
+          - not_null

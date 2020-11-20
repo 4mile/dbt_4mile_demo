@@ -1,11 +1,11 @@
-name: '{company_name}'
+name: 'four_mile_analytics_sample'
 version: 0.1.0
 
 require-dbt-version: ">=0.18.0"
 config-version: 2
 
 # Configure database connection profile for dbt to use
-profile: '{profile}'
+profile: '4_mile_bq_sample'
 
 # Set paths for dbt objects
 analysis-paths: ["analysis"]
@@ -29,10 +29,14 @@ quoting:
   schema: true
   identifier: true
 
+on-run-start:
+  - '{% do adapter.create_schema(api.Relation.create(target.project, "audit")) %}'
+  - "{{ dbt_ml.create_model_audit_table() }}"
+
 
 # DBT MODELS
 models:
-    {company_name}:
+    four_mile_analytics_sample:
         +enabled: true
         +materialized: view
         +persist_docs:
@@ -46,15 +50,36 @@ models:
             +enabled: true
             +materialized: table
 
+            core:
+                +schema: core
+            product:
+                +schema: product    
+        
+        ml:
+            +enabled: true
+            +schema: ml
+            +materialized: model
+            +post-hook: "{{ dbt_ml.model_audit() }}"
 
 
 # Create scoped variables
 vars:
-    {company_name}:
-        dbt_project_created_date: '2020-09-21'  # Set as date when dbt project first created
+    "dbt_ml:audit_schema": 'audit'
+    "dbt_ml:audit_table": 'ml_models'
+
+    four_mile_analytics_sample:
+        source_database: 'four-mile-lake'
+        dbt_project_created_date: '2020-11-19'  # Set as date when dbt project first created
+
+    asana_source:
+        asana_database: 'four-mile-lake'
+    github_source:
+        github_database: 'four-mile-lake'
+    fivetran_log:
+        fivetran_log_database: 'four-mile-lake'
 
 
 # Define dbt data seeds
 seeds:
-    {company_name}:
+    four_mile_analytics_sample:
       +enabled: true

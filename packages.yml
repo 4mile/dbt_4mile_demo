@@ -1,7 +1,21 @@
 packages:
+  # Utilities
   - package: fishtown-analytics/dbt_utils
     version: 0.6.2
   - package: fishtown-analytics/audit_helper
     version: 0.3.0
   - package: fishtown-analytics/codegen
     version: 0.3.1
+  - package: kristeligt-dagblad/dbt_ml
+    version: 0.4.0
+  # Data Packages
+  - package: fivetran/fivetran_log
+    version: 0.2.0
+  - package: fivetran/github_source
+    version: 0.1.1
+  - package: fivetran/github
+    version: 0.1.2
+  - package: fivetran/asana_source
+    version: 0.2.0
+  - git: "https://github.com/jmbrooks/dbt_asana.git"
+    revision: v0.2.1

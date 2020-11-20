@@ -1,0 +1,14 @@
+version: 2
+
+sources:
+  - name: public
+    database: four-mile-lake
+    
+    tables:
+      - name: iris_ml_data
+        columns:
+          - name: sepal_length
+          - name: sepal_width
+          - name: petal_length
+          - name: petal_width
+          - name: species

@@ -10,3 +10,6 @@ dbt_modules/*
 !dbt_modules/.gitkeep
 logs/*
 !logs/.gitkeep
+
+profiles.yml
+keyfile.json

@@ -1,0 +1,46 @@
+version: 2
+
+models:
+    - name: fct_ga_source_daily
+      description: "{{ doc('fct_ga_source_daily') }}"
+      columns:
+          - name: source_daily_id
+            description: "The primary key for this table"
+            tests:
+                - primary_key
+          - name: visit_date
+            description: "The date when the site was recorded as visited via Google Analytics"
+            tests:
+                - not_null
+          - name: source
+            description: "The platform that the visitor was sourced from (e.g. google, bing, looker.com, (direct))"
+            tests:
+                - not_null
+          - name: medium
+            description: "The medium by which they visited (e.g. organic, referral, (none))"
+            tests:
+                - not_null
+          - name: browser
+            description: "The browser of the visitor (e.g. Chrome, Edge, Safari)"
+            tests:
+                - not_null
+          - name: pageviews
+            description: "Sum of times site pages were viewed"
+          - name: unique_pageviews
+            description: "Sum of UNIQUE (per user) times site pages were viewed"
+          - name: total_time_on_site
+            description: "Sum of time on the site, in seconds"
+          - name: bounces
+            description: "The total number of times the user visited the site via a search or ad, then bounced right off without another page view"
+          - name: users
+            description: "Sum of visitors to the site"
+          - name: new_users
+            description: "Sum of visitors to the site who had never visited the site before"
+          - name: sessions
+            description: "The total number of individual web sessions"
+          - name: daily_avg_pageviews_per_session
+            description: "Average total pageviews per session for the visit day"
+          - name: daily_avg_session_duration
+            description: "Average duration of the complete visitor session for the visit day"
+          - name: daily_avg_time_on_page
+            description: "Average time on site pages for the visit day"
