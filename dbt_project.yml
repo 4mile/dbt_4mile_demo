@@ -64,6 +64,7 @@ models:
 
 # Create scoped variables
 vars:
+    "dbt_date:time_zone": 'America/Los_Angeles'
     "dbt_ml:audit_schema": 'audit'
     "dbt_ml:audit_table": 'ml_models'
 

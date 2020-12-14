@@ -2,6 +2,7 @@ version: 2
 
 models:
     - name: stg_google_analytics__daily_summary
+        
       columns:
           - name: daily_summary_id
             description: "The primary key for this table"

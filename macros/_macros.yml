@@ -1,0 +1,9 @@
+version: 2
+
+macros:
+  - name: query_comment
+    description: "Enrich query comments for dbt-generated SQL to include lots of details that help with SQL execution history (e.g. node, 
+  target, profile, dbt version)"
+
+  - name: test_primary_key
+    description: "Test Macro - a helper test for confirming a column is the primary key. Tests that there are no nulls and uniqueness"

@@ -10,6 +10,7 @@ select
   source,
   medium,
   browser,
+  null as country,
   avg(daily_avg_session_duration) as daily_avg_session_duration,
   avg(daily_avg_time_on_page) as daily_avg_time_on_page,
   sum(bounces) as bounces,
@@ -20,6 +21,10 @@ select
   sum(unique_pageviews) as unique_pageviews,
   sum(users) as users
 from
-  {{ ref('stg_google_analytics__daily_summary') }}
+  {{ ref('stg_google_analytics__daily_summary') }} gad
+  inner join {{ ref('dim_date') }} dd
+    on gad.report_date = dd.calendar_date
+  left join {{ ref('dim_country') }} c
+    on 'USA' = c.country
 group by
   2, 3, 4, 5

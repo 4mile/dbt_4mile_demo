@@ -8,6 +8,8 @@ packages:
     version: 0.3.1
   - package: kristeligt-dagblad/dbt_ml
     version: 0.4.0
+  - package: calogica/dbt_expectations
+    version: 0.2.0
   # Data Packages
   - package: fivetran/fivetran_log
     version: 0.2.0

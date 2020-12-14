@@ -1,0 +1,9 @@
+jobs:
+# Give each job a unique name. The name will be displayed in the Fivetran dashboard once your jobs are imported.
+ - name: nightly
+   schedule: 0 18 * * *  # This example will run every day at midnight.
+   steps:
+     - name: run models
+       command: dbt run
+     - name: test models
+       command: dbt test

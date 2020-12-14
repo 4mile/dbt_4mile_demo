@@ -3,14 +3,29 @@ version: 2
 sources:
   - name: google_analytics
     database: four-mile-lake
+    description: "Google Analytics basic summary data"
+    loader: "Fivetran"
     
     tables:
       - name: daily_summary
+        description: Basic Google Analytics engagement summary data
         columns:
           - name: _fivetran_id
+            description: Unique identifier applied by Fivetran
+            tests:
+              - unique
+              - not_null
           - name: date
+            description: The date of the website visit, as tracked by GA
+            tests:
+              - not_null
           - name: profile
+            tests:
+              - not_null
           - name: _fivetran_synced
+            description: The UTC time that the row was synced
+            tests:
+              - not_null
           - name: avg_session_duration
           - name: avg_time_on_page
           - name: bounces

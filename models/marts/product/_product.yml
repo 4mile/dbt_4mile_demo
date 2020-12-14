@@ -1,8 +1,26 @@
 version: 2
 
+exposures:
+    - name: Product Summary - dbt Demo
+      description: "Demo dashboard based on 4 Mile Google Analytics visit fact data"
+      type: dashboard
+      maturity: medium
+      url: https://4mile.looker.com/dashboards/134
+      owner:
+        email: jb@4mile.io
+        name: JB
+      
+      depends_on:
+        - ref('fct_ga_source_daily')
+        - ref('dim_date')
+        - source('google_analytics', 'daily_summary')
+
+
 models:
     - name: fct_ga_source_daily
+      owner: "@jmbrooks"
       description: "{{ doc('fct_ga_source_daily') }}"
+
       columns:
           - name: source_daily_id
             description: "The primary key for this table"
@@ -20,6 +38,8 @@ models:
             description: "The medium by which they visited (e.g. organic, referral, (none))"
             tests:
                 - not_null
+                - dbt_expectations.expect_column_distinct_values_to_equal_set:
+                    value_set: ['organic', 'referral', '(none)', '(not set)']
           - name: browser
             description: "The browser of the visitor (e.g. Chrome, Edge, Safari)"
             tests:
@@ -32,6 +52,10 @@ models:
             description: "Sum of time on the site, in seconds"
           - name: bounces
             description: "The total number of times the user visited the site via a search or ad, then bounced right off without another page view"
+            tests:
+              - dbt_expectations.expect_column_stdev_to_be_between:
+                  min_value: 1.5
+                  max_value: 2.0
           - name: users
             description: "Sum of visitors to the site"
           - name: new_users

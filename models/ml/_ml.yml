@@ -1,5 +1,19 @@
 version: 2
 
+exposures:
+    - name: Iris Clustering ML Models Audit Table
+      description: "Example Clustering data results audit table for BigQuery ML models"
+      type: ml
+      maturity: low
+      url: https://console.cloud.google.com/bigquery?folder=&organizationId=&project=four-mile-dev&p=four-mile-dev&d=audit&t=ml_models&page=table
+      owner:
+        email: jb@4mile.io
+        name: JB
+      
+      depends_on:
+        - ref('iris_clusters')
+        - source('public', 'iris_ml_data')
+
 models:
     - name: iris_clusters
       description: "{{ doc('iris_clusters') }}"
