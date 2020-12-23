@@ -25,9 +25,9 @@ clean-targets:
 # Set query behavior: prepend comments and quoting
 query-comment: "{{ query_comment(node) }}"
 quoting:
-  database: true
-  schema: true
-  identifier: true
+  database: false
+  schema: false
+  identifier: false
 
 on-run-start:
   - '{% do adapter.create_schema(api.Relation.create(target.project, "audit")) %}'

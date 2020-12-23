@@ -1,9 +1,11 @@
+dbtVersion: 0.18.1
+
 jobs:
-# Give each job a unique name. The name will be displayed in the Fivetran dashboard once your jobs are imported.
- - name: nightly
-   schedule: 0 18 * * *  # This example will run every day at midnight.
+# Unique list of schedule-based jobs to be orchestrated by Fivetran
+ - name: daily_5am
+   schedule: 0 13 * * *
    steps:
-     - name: run models
+     - name: run all models
        command: dbt run
-     - name: test models
+     - name: test all models
        command: dbt test

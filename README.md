@@ -20,13 +20,20 @@ After first pull down the project, start by running the following:
 
 This will install all dependent packages, and loading any data seeds to your dev schema in the warehouse.
 
-From there, try running the following commands to get started and view the project documentation:
+The below commands are commonly used on the day-to-day when developing with dbt to QA, run and test DAGs and transformation outputs.
 
 - dbt compile
 - dbt run
 - dbt test
+
+Finally, try running the following commands to get started by viewing the project documentation:
+
 - dbt docs generate
 - dbt docs serve
+
+A full list of commands can be found [here](https://docs.getdbt.com/reference/dbt-commands/). The `dbt run` docs in particular are worth
+knowing well in order to understand how to run only certain models, rather than executing all models every time while you're developing
+in dbt.
 
 ## Resources:
 

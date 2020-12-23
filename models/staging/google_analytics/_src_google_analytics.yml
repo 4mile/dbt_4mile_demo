@@ -4,7 +4,9 @@ sources:
   - name: google_analytics
     database: four-mile-lake
     description: "Google Analytics basic summary data"
+
     loader: "Fivetran"
+    loaded_at_field: _fivetran_synced
     
     tables:
       - name: daily_summary
