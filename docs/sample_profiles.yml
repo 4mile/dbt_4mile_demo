@@ -1,0 +1,19 @@
+config:
+  use_colors: true
+  partial_parse: true
+  send_anonymous_usage_stats: false
+
+4_mile_bq_sample:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: oauth
+      project: four-mile-dev
+      dataset: dbt_youruser  # <-- Replace "youruser" with your username, e.g. dbt_jbrooks
+      threads: 4
+      timeout_seconds: 300
+      location: US
+      priority: interactive
+      retries: 1
+      maximum_bytes_billed: 1000000000

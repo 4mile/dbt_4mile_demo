@@ -84,5 +84,8 @@ vars:
 
 # Define dbt data seeds
 seeds:
+    +quote_columns: false
+    
     four_mile_analytics_sample:
       +enabled: true
+      +schema: intermediate
