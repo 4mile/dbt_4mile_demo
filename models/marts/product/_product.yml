@@ -39,7 +39,7 @@ models:
             tests:
                 - not_null
                 - dbt_expectations.expect_column_distinct_values_to_equal_set:
-                    value_set: ['organic', 'referral', '(none)', '(not set)']
+                    value_set: ['organic', 'referral', '(none)', '(not set)', 'Google', 'Facebook', '(Direct)']
           - name: browser
             description: "The browser of the visitor (e.g. Chrome, Edge, Safari)"
             tests:
@@ -68,3 +68,10 @@ models:
             description: "Average duration of the complete visitor session for the visit day"
           - name: daily_avg_time_on_page
             description: "Average time on site pages for the visit day"
+
+    - name: fct_ga_source_daily
+      columns:
+        - name: is_paid_medium
+          description: ""
+          tests:
+            - not_null
