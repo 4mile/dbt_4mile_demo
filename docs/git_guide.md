@@ -9,10 +9,13 @@ made
 ## Git branches
 
 _Git branches should_:
+
 * be named as follows:
   * feature/name-of-feature
-  * fix/name-of-fix
   * refactor/name-of-refactor
+  * fix/name-of-fix
+  * hotfix/name-of-hot-fix
+    * Hot fixes should _only_ be used for negigible but urgent, very quick fixes, as they bypass dbt model tests
 
 ## Commits
 
@@ -37,7 +40,7 @@ _Commits can_:
 
 _Pull requests should_:
 
-* follow the [Pull Request Template](/.github/pull_request_template.md) to fully
+* follow the [Pull Request Template](docs/templates/issue_template.md) to fully
   describe the PR.
 * tackle a functional grouping of work. While it may be tempting to (for
   example) build MRR models _and_ add maintenance jobs in a single PR, these
@@ -71,10 +74,10 @@ If you've noticed a bug, open up an issue in the dbt repository. We use the same
 
 _Bug reports should_:
 
-* follow the [Bug Report Template](/.github/ISSUE_TEMPLATE/bug_report.md) to create a
+* follow the [Issue Template](docs/templates/issue_template.md) to create a
   JIRA ticket that fully describes the bug.
 * include a good summary that can quickly and uniquely identify a bug report. It should explain the problem, not your suggested solution.
-  * Good: "January 2021 filter overcounts users on the Organization dashboard"
+  * Good: "January 2021 filter overcounts EAPs on the Organization dashboard"
   * Bad: "Dashboard crashes V2"
 * include detailed steps to reproduce, and expected vs. actual results
 * link to any relevant PRs, issues, data requests or other JIRA tickets
