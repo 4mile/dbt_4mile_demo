@@ -40,7 +40,7 @@ _Commits can_:
 
 _Pull requests should_:
 
-* follow the [Pull Request Template](.github/pull_request_template.md) to fully
+* follow the [Pull Request Template](/.github/pull_request_template.md) to fully
   describe the PR.
 * tackle a functional grouping of work. While it may be tempting to (for
   example) build MRR models _and_ add maintenance jobs in a single PR, these
@@ -74,7 +74,7 @@ If you've noticed a bug, open up an issue in the dbt repository. We use the same
 
 _Bug reports should_:
 
-* follow the [Issue Template](.github/ISSUE_TEMPLATE/bug_report.md) to create a
+* follow the [Issue Template](/.github/ISSUE_TEMPLATE/bug_report.md) to create a
   JIRA ticket that fully describes the bug.
 * include a good summary that can quickly and uniquely identify a bug report. It should explain the problem, not your suggested solution.
   * Good: "January 2021 filter overcounts EAPs on the Organization dashboard"
